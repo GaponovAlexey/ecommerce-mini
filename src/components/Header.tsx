@@ -10,6 +10,7 @@ const cartItem: ICartItem[] = [
     name: 'MacBook Pro 14.2", Apple M1 Max',
     count: 1,
     price: 5000,
+    
   },
 ]
 
