@@ -4,9 +4,8 @@ import LogoImage from '../assets/images/eth.svg'
 import cardIcon from '../assets/images/card.svg'
 import { ICartItem } from '../type'
 
-
 export const Header: FC = () => {
-const [cartItem, setCARTITEM] = useState([
+  const [cartItem, setCARTITEM] = useState([
     {
       id: Date.now(),
       imagePath: 'https://items.s1.citilink.ru/1624332_v01_b.jpg',
@@ -14,16 +13,16 @@ const [cartItem, setCARTITEM] = useState([
       count: 1,
       price: 5520,
     },
-  ]);
+  ])
 
   const [isShowCart, setISSHOWCART] = useState(false)
 
   const total = cartItem.reduce((acc, item) => {
-    return acc + item.price 
+    return acc + item.price
   }, 0)
 
   const removeHandler = (id: number) => {
-    setCARTITEM(prev => prev.filter(el => el.id !== id))
+    setCARTITEM((prev) => prev.filter((el) => el.id !== id))
   }
 
   return (
