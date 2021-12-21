@@ -4,17 +4,18 @@ import LogoImage from '../assets/images/eth.svg'
 import cardIcon from '../assets/images/card.svg'
 import { ICartItem } from '../type'
 
-const cartItem: ICartItem[] = [
-  {
-    id: Date.now(),
-    imagePath: 'https://items.s1.citilink.ru/1624332_v01_b.jpg',
-    name: 'MacBook Pro 14.2", Apple M1 Max',
-    count: 1,
-    price: 5520,
-  },
-]
 
 export const Header: FC = () => {
+const [cartItem, setCARTITEM] = useState([
+    {
+      id: Date.now(),
+      imagePath: 'https://items.s1.citilink.ru/1624332_v01_b.jpg',
+      name: 'MacBook Pro 14.2", Apple M1 Max',
+      count: 1,
+      price: 5520,
+    },
+  ]);
+
   const [isShowCart, setISSHOWCART] = useState(false)
 
   const total = cartItem.reduce((acc, item) => {
@@ -22,7 +23,7 @@ export const Header: FC = () => {
   }, 0)
 
   const removeHandler = (id: number) => {
-    cartItem.filter((el) => el.id !== id)
+    setCARTITEM(prev => prev.filter(el => el.id !== id))
   }
 
   return (
