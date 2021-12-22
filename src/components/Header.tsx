@@ -3,6 +3,7 @@ import React, { FC, useState } from 'react'
 import LogoImage from '../assets/images/eth.svg'
 import cardIcon from '../assets/images/card.svg'
 import { ICartItem } from '../type'
+import { Quntity } from './Quntity'
 
 export const Header: FC = () => {
   const [cartItem, setCARTITEM] = useState<ICartItem[]>([
@@ -53,13 +54,12 @@ export const Header: FC = () => {
             <img
               src={item.imagePath}
               alt={item.name}
-              width='55'
-              height='55'
-              className='mr-3'
+              className='mr-3 h-14'
             />
             <div>
               <div>{item.name}</div>
               <div className='text-orange-400 '>{`${item.count} x ${item.price}`}</div>
+              <Quntity />
               <button
                 onClick={() => removeHandler(item.id)}
                 className=' text-red-700 bg-origin-padding bg-transparent border-0'
