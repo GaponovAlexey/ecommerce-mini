@@ -5,7 +5,7 @@ import cardIcon from '../assets/images/card.svg'
 import { ICartItem } from '../type'
 
 export const Header: FC = () => {
-  const [cartItem, setCARTITEM] = useState([
+  const [cartItem, setCARTITEM] = useState<ICartItem[]>([
     {
       id: Date.now(),
       imagePath: 'https://items.s1.citilink.ru/1624332_v01_b.jpg',

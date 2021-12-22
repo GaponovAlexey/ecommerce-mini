@@ -1,9 +1,10 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
+import { IProduct } from '../type'
 
 export const Products: FC = () => {
-  return (
-    <div className='mx-4'>
-      Products
-    </div>
-  )
+  const [products, setPRODUCTS] = useState<IProduct[] | []>([
+    { id: 1, name: 'alexey', imagePath: 'path', price: 500000 },
+  ])
+
+  return <div className='mt-4'>Products</div>
 }
