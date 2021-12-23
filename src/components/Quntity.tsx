@@ -1,18 +1,25 @@
 import React, { FC, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { decrement, increment, incrementByAmount } from '../store/state'
+import { RootState } from '../store/store'
 
 export const Quntity: FC = () => {
-  const [count, setVALUE] = useState<number>(0)
-
+  // const [count, setVALUE] = useState<number>(0)
+  const dispatch = useDispatch()
+  
+  const { count } = useSelector((state: RootState) => state.count)
+  
+  console.log(count);
   return (
     <div className='items-center'>
-      <button onClick={() => setVALUE((prev) => prev - 1)}>-</button>
+      <button onClick={() => dispatch(decrement())}>-</button>
       <input
         type='number'
         value={count}
-        onChange={(e) => setVALUE(+e.target.value)}
+        onChange={(el) => dispatch(incrementByAmount(+el.target.value))}
         className='mx-1 w-10'
       />
-      <button onClick={() => setVALUE((prev) => prev + 1)}>+</button>
+      <button onClick={() => dispatch(increment())}>+</button>
     </div>
   )
 }
