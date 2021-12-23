@@ -1,5 +1,7 @@
 import classNames from 'classnames'
 import React, { FC } from 'react'
+import { useDispatch } from 'react-redux'
+import { addItem } from '../../store/state'
 import { IProduct } from '../../type'
 import { Quntity } from '../Quntity'
 
@@ -8,8 +10,9 @@ interface IPporoductItem {
 }
 
 export const ProductItem: FC<IPporoductItem> = ({ product }) => {
+  const dispatch = useDispatch()
   const addHandler = (id: number) => {
-    console.log(id)
+    dispatch(addItem(product))
   }
 
   return (

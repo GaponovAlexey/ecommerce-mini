@@ -1,29 +1,24 @@
 import cn from 'classnames'
 import React, { FC, useState } from 'react'
-import LogoImage from '../assets/images/eth.svg'
+import { useDispatch, useSelector } from 'react-redux'
 import cardIcon from '../assets/images/card.svg'
-import { ICartItem } from '../type'
+import LogoImage from '../assets/images/eth.svg'
+import { removeItem } from '../store/state'
+import { RootState } from '../store/store'
 import { Quntity } from './Quntity'
 
 export const Header: FC = () => {
-  const [cartItem, setCARTITEM] = useState<ICartItem[]>([
-    {
-      id: Date.now(),
-      imagePath: 'https://items.s1.citilink.ru/1624332_v01_b.jpg',
-      name: 'MacBook Pro 14.2", Apple M1 Max',
-      count: 1,
-      price: 5520,
-    },
-  ])
+  const {basket} = useSelector((state: RootState) => state.count)
+  const dispatch = useDispatch()
 
   const [isShowCart, setISSHOWCART] = useState(false)
 
-  const total = cartItem.reduce((acc, item) => {
-    return acc + item.price
-  }, 0)
+  // const total = cartItem.reduce((acc, item) => {
+  //   return acc + item.price
+  // }, 0)
 
   const removeHandler = (id: number) => {
-    setCARTITEM((prev) => prev.filter((el) => el.id !== id))
+    dispatch(removeItem({id}))
   }
 
   return (
@@ -49,13 +44,9 @@ export const Header: FC = () => {
           hidden: !isShowCart,
         })}
       >
-        {cartItem.map((item) => (
+        {basket.map((item) => (
           <div key={item.name} className='flex items-center '>
-            <img
-              src={item.imagePath}
-              alt={item.name}
-              className='mr-3 h-14'
-            />
+            <img src={item.imagePath} alt={item.name} className='mr-3 h-14' />
             <div>
               <div>{item.name}</div>
               <div className='text-orange-400 '>{`${item.count} x ${item.price}`}</div>
@@ -69,9 +60,7 @@ export const Header: FC = () => {
             </div>
           </div>
         ))}
-        <div className='text-lg'>
-          Total:$ <b>{total}</b>
-        </div>
+        <div className='text-lg'>{/* Total:$ <b>{total}</b> */}</div>
       </div>
     </div>
   )

@@ -6,5 +6,5 @@ export interface IProduct {
 }
 
 export interface ICartItem extends IProduct {
-  count: number,
+  count?: number,
 }
