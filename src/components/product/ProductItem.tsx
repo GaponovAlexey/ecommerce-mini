@@ -13,8 +13,8 @@ export const ProductItem: FC<IPporoductItem> = ({ product }) => {
   }
 
   return (
-    <div className='shadow-md rounded-md p-5 w-4/5 mx-auto mb-5 bg-white justify-center flex-col text-center items-center '>
-      <img className='h-24' src={product.imagePath} alt={product.name} />
+    <div className='shadow-sm rounded-md flex p-5 w-4/5 mx-auto mt-7 bg-white justify-center flex-col center text-center items-center '>
+      <img className='h-24 ' src={product.imagePath} alt={product.name} />
       <div className='text-lg font-bold'>{product.name}</div>
       <div className='text-sm text-gray-600'>{product.price}p</div>
       <Quntity />
