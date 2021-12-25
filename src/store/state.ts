@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ICartItem, IProduct } from '../type'
 
 export interface CounterState {
-  count: number
+  count: 0
   products: Array<IProduct>
   basket: Array<ICartItem>
 }
@@ -44,26 +44,56 @@ export const counterSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.count += 1
+    increment: (state, { payload }) => {
+      const newOrder = state.basket.map((el) => {
+        if (el.id === payload.id) {
+          const newQuntity = el.count + 1
+          return {
+            ...el,
+            count: newQuntity,
+          }
+        } else {
+          return el
+        }
+      })
+      state.basket = newOrder
     },
-    decrement: (state) => {
-      state.count -= 1
-    },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.count += action.payload
+    decrement: (state, { payload }) => {
+      const newOrder = state.basket.map((el) => {
+        if (el.id === payload.id) {
+          const newQuntity = el.count - 1
+          return {
+            ...el,
+            count: newQuntity,
+          }
+        } else {
+          return el
+        }
+      })
+      state.basket = newOrder
     },
     removeItem: (state, { payload }) => {
       state.basket = state.basket.filter((el) => el.id !== payload.id)
     },
     addItem: (state, { payload }) => {
-      state.basket.push(payload)
+      const realId = state.basket.find((el) => el.id === payload.id)
+      if (!realId) {
+        state.basket.push({
+          id: payload.id,
+          imagePath: payload.imagePath,
+          name: payload.name,
+          price: payload.price,
+          count: state.count,
+        })
+      } else {
+        return
+      }
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { removeItem, addItem, increment, decrement, incrementByAmount } =
+export const { removeItem, addItem, increment, decrement } =
   counterSlice.actions
 
 export default counterSlice.reducer

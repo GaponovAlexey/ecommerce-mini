@@ -9,7 +9,7 @@ export const Products: FC = () => {
 
   return (
     <div className='m-6'>
-      {products.map((el) => (
+      {products.map((el: any) => (
         <ProductItem key={el.id} product={el} />
       ))}
     </div>

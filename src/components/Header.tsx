@@ -3,14 +3,15 @@ import React, { FC, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import cardIcon from '../assets/images/card.svg'
 import LogoImage from '../assets/images/eth.svg'
-import { removeItem } from '../store/state'
+import { counterSlice } from '../store/state'
+// import { removeItem } from '../store/state'
 import { RootState } from '../store/store'
 import { Quntity } from './Quntity'
 
 export const Header: FC = () => {
-  const {basket} = useSelector((state: RootState) => state.count)
+  const {basket, count} = useSelector((state: RootState) => state.count)
   const dispatch = useDispatch()
-
+  const {removeItem} = counterSlice.actions
   const [isShowCart, setISSHOWCART] = useState(false)
 
   // const total = cartItem.reduce((acc, item) => {
@@ -44,13 +45,13 @@ export const Header: FC = () => {
           hidden: !isShowCart,
         })}
       >
-        {basket.map((item) => (
+        {basket.map((item: any) => (
           <div key={item.name} className='flex items-center '>
             <img src={item.imagePath} alt={item.name} className='mr-3 h-14' />
             <div>
               <div>{item.name}</div>
               <div className='text-orange-400 '>{`${item.count} x ${item.price}`}</div>
-              <Quntity />
+              <Quntity id={item.id} />
               <button
                 onClick={() => removeHandler(item.id)}
                 className=' text-red-700 bg-origin-padding bg-transparent border-0'

@@ -1,9 +1,7 @@
-import classNames from 'classnames'
 import React, { FC } from 'react'
 import { useDispatch } from 'react-redux'
 import { addItem } from '../../store/state'
 import { IProduct } from '../../type'
-import { Quntity } from '../Quntity'
 
 interface IPporoductItem {
   product: IProduct
@@ -20,7 +18,6 @@ export const ProductItem: FC<IPporoductItem> = ({ product }) => {
       <img className='h-24 ' src={product.imagePath} alt={product.name} />
       <div className='text-lg font-bold'>{product.name}</div>
       <div className='text-sm text-gray-600'>{product.price}p</div>
-      <Quntity />
       <button
         onClick={() => addHandler(product.id)}
         className='bg-pink-500 text-white rounded-md px-1 py-2'
