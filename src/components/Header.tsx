@@ -9,9 +9,9 @@ import { RootState } from '../store/store'
 import { Quntity } from './Quntity'
 
 export const Header: FC = () => {
-  const {basket, count} = useSelector((state: RootState) => state.count)
+  const { basket, count } = useSelector((state: RootState) => state.count)
   const dispatch = useDispatch()
-  const {removeItem} = counterSlice.actions
+  const { removeItem } = counterSlice.actions
   const [isShowCart, setISSHOWCART] = useState(false)
 
   // const total = cartItem.reduce((acc, item) => {
@@ -19,7 +19,7 @@ export const Header: FC = () => {
   // }, 0)
 
   const removeHandler = (id: number) => {
-    dispatch(removeItem({id}))
+    dispatch(removeItem({ id }))
   }
 
   return (
@@ -50,14 +50,16 @@ export const Header: FC = () => {
             <img src={item.imagePath} alt={item.name} className='mr-3 h-14' />
             <div>
               <div>{item.name}</div>
-              <div className='text-orange-400 '>{`${item.count} x ${item.price}`}</div>
+              <div className='text-orange-400 text-2xl '>{`${item.count} x ${item.price}`}</div>
               <Quntity id={item.id} />
-              <button
-                onClick={() => removeHandler(item.id)}
-                className=' text-red-700 bg-origin-padding bg-transparent border-0'
-              >
-                delete
-              </button>
+              <span className='pl-0'>
+                <button
+                  onClick={() => removeHandler(item.id)}
+                  className=' text-red-700 bg-origin-padding bg-transparent border-0 pr-10'
+                >
+                  delete
+                </button>
+              </span>
             </div>
           </div>
         ))}

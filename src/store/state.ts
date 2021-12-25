@@ -86,7 +86,7 @@ export const counterSlice = createSlice({
           count: state.count,
         })
       } else {
-        return
+        realId.count += 1
       }
     },
   },
