@@ -83,7 +83,7 @@ export const counterSlice = createSlice({
           imagePath: payload.imagePath,
           name: payload.name,
           price: payload.price,
-          count: state.count,
+          count: state.count + 1,
         })
       } else {
         realId.count += 1
