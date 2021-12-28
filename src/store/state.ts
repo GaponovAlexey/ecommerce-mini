@@ -12,19 +12,19 @@ const initialState: CounterState = {
   products: [
     {
       id: 1,
-      name: 'Ноутбук Apple MacBook Pro, Z15J000D6, серебристый',
+      name: 'Apple MacBook Pro, 10 core 62ГБ, 5122ГБ',
       imagePath: 'https://items.s1.citilink.ru/1623730_v01_b.jpg',
       price: 267690,
     },
     {
       id: 2,
-      name: 'Apple MacBook Pro 14.2", Apple M1 Pro 10 core 32ГБ, 5122ГБ SSD, Mac OS, Z15G000D4',
+      name: 'Apple MacBook Pro 14.2"10 core 32ГБ, 5122ГБ',
       imagePath: 'https://items.s1.citilink.ru/1623730_v01_b.jpg',
       price: 494990,
     },
     {
       id: 3,
-      name: 'Apple MacBook Pro 14.2", Apple M1 Max 10 core 32ГБ, 1ТБ SSD, Mac OS, Z15H0007B',
+      name: 'Apple MacBook Pro 14.2" 10 core 32ГБ, 1ТБ ',
       imagePath: 'https://items.s1.citilink.ru/1623730_v01_b.jpg',
       price: 294990,
     },
